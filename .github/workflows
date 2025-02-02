@@ -1,0 +1,38 @@
+name: Linting Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard
+
+      - name: Install dependencies
+        run: npm install --save-dev stylelint stylelint-config-standard
+
+      - name: Run Stylelint
+        run: npx stylelint "styles/*.css" --fix
+
+      - name: Run HTML Linting
+        run: htmlhint "src/*.html"
+
+      - name: Run CSS Linting
+        run: stylelint "styles/*.css"
