@@ -1,0 +1,13 @@
+
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "A simple portfolio website",
+  "scripts": {
+    "lint:css": "stylelint 'styles/*.css' --fix"
+  },
+  "devDependencies": {
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^30.0.0"
+  }
+}
